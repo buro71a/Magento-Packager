@@ -64,6 +64,7 @@ class Mage_Shell_Packager extends Mage_Shell_Abstract
                 $this->getConfig()->setData('license', $this->getLicense());
                 $this->getConfig()->setData('license_uri', $this->getLicenseUri());
                 $this->getConfig()->setData('summary', $this->getSummary());
+                $this->getConfig()->setData('notes', $this->getNotes());
                 $this->getConfig()->setData('description', $this->getDescription());
                 $this->getConfig()->setData('version', (string)Mage::getConfig()->getNode()->modules->$name->version);
                 $this->getConfig()->setData('stability', $this->getStability());
@@ -168,6 +169,16 @@ class Mage_Shell_Packager extends Mage_Shell_Abstract
     public function getChannel()
     {
         return $this->getComposerJson()->extra->magento_connect->channel;
+    }
+
+    /**
+     * Get extension notes.
+     *
+     * @return mixed
+     */
+    public function getNotes()
+    {
+        return $this->getComposerJson()->extra->magento_connect->notes;
     }
 
     /**
